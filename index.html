@@ -8,23 +8,33 @@
         <script src="app.js"></script>
     </head>
     <body>
-        <header>
-            <div class="container">
-                <h1>Avengers Character Search</h1>
-            </div>
-        </header>
-        <main>
-            <section class="searchHero">
+        <div class="content">
+            <header>
                 <div class="container">
-                    <form>
-                        <h3>Search by Full Name or Alias</h3>
-                        <input type="text" class="inputfield" placeholder="e.g. Captain America or Steve Rogers">
-                        <button type="submit" class="btn">Search</button>
-                    </form>
+                    <div class ="avengers-logo">
+                        <img src="URI351-Avengers-Logo.jpg" alt="Avengers Logo">
+                    </div>
+                    <h1>SHIELD Avengers Database</h1>
                 </div>
-
-            </section>
-        </main>
+            </header>
+            <main>
+                <section class="search-hero">
+                    <div class="container">
+                        <h3>Search by Full Name or Alias</h3>
+                        <form> 
+                            <input type="text" class="inputfield" placeholder="e.g. Captain America or Steve Rogers">
+                            <button type="submit" class="btn">Search</button>
+                        </form>
+                    </div>
+                </section>
+                <section class="search-results">
+                    <div class="container">
+                        <h2>RESULT</h2>
+                        <div id="result"></div>
+                    </div>
+                </section>
+            </main>
+        </div>
         <footer>
             <div class="container">
                 <p>Copyright 2022, Peter Thelwell</p>

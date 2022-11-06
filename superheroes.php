@@ -65,8 +65,39 @@ $superheroes = [
 
 ?>
 
+
+<?php
+    header('Access-Control-Allow-Origin: *');
+?>
+
+
 <ul>
+<?php $query = $_REQUEST['query'];?>
 <?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
+    <?php if($query == ""):?>
+        <li><?= $superhero['alias']; ?></li>
+    <?php endif; ?>
 <?php endforeach; ?>
 </ul>
+
+
+<?php $query = $_REQUEST['query'];?>
+<?php $state = "FALSE";?>
+<?php foreach ($superheroes as $superhero):?>
+    <?php if($query == $superhero['name'] || $query == $superhero['alias']):?>
+        <?php $state = "TRUE";?> 
+    <?php break ?>    
+    <?php endif;?>
+<?php endforeach;?>
+
+
+<?php if($state == "TRUE"):?>
+        <h1><?= $superhero['name']; ?></h1>
+        <h2><?= "A.K.A"." ". $superhero['alias']; ?></h2>
+        <h3><?= $superhero['biography']; ?></h3>
+<?php endif;?>
+        
+
+<?php if($state != "TRUE" && $query != ""):?>
+        <h4><?= "Superhero not found"; ?></h3> 
+<?php endif;?>
