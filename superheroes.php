@@ -17,7 +17,7 @@ $superheroes = [
       "id" => 3,
       "name" => "Peter Parker",
       "alias" => "Spiderman",
-      "biography" => "Bitten by a radioactive spider, Peter Parker’s arachnid abilities give him amazing powers he uses to help others, while his personal life continues to offer plenty of obstacles.",
+      "biography" => "Bitten by a radioactive spider, Peter Parker’s arachnid abilities give him amazing powers he uses to help others, while his superheroal life continues to offer plenty of obstacles.",
   ],
   [
       "id" => 4,
@@ -67,37 +67,39 @@ $superheroes = [
 
 
 <?php
-    header('Access-Control-Allow-Origin: *');
+
+    header("Access-Control-Allow-Origin: *");
+
 ?>
 
 
-<ul>
-<?php $query = $_REQUEST['query'];?>
-<?php foreach ($superheroes as $superhero): ?>
-    <?php if($query == ""):?>
-        <li><?= $superhero['alias']; ?></li>
-    <?php endif; ?>
-<?php endforeach; ?>
-</ul>
+<?php
 
+if ($_SERVER["REQUEST_METHOD"] === "GET") {
+    $query = filter_input(INPUT_GET, "query", FILTER_SANITIZE_STRING);
+    echo("<h1>RESULT</h1>");
+    echo("<hr>");
+    $state = False;
+    if ($query != "") {
+        foreach ($superheroes as $superhero) {
+            if (($query == $superhero["name"]) || ($query == $superhero["alias"])) {
+                echo("<h3>".$superhero["alias"]."</h3>");
+                echo("<h4>A.K.A ".$superhero["name"]."</h4>");
+                echo("<p>".$superhero["biography"]."</p>");
+                $state = True;
+            }
+        }
+        if ($state == False) {
+            echo("<h2>SUPERHERO NOT FOUND</h2>");
+        }
+    }
+    else {
+        echo("<ul>");
+        foreach ($superheroes as $superhero):
+            echo("<li>".$superhero['alias']. "</li>");
+        endforeach;
+        echo("</ul>");
+    }
+}
 
-<?php $query = $_REQUEST['query'];?>
-<?php $state = "FALSE";?>
-<?php foreach ($superheroes as $superhero):?>
-    <?php if($query == $superhero['name'] || $query == $superhero['alias']):?>
-        <?php $state = "TRUE";?> 
-    <?php break ?>    
-    <?php endif;?>
-<?php endforeach;?>
-
-
-<?php if($state == "TRUE"):?>
-        <h1><?= $superhero['name']; ?></h1>
-        <h2><?= "A.K.A"." ". $superhero['alias']; ?></h2>
-        <h3><?= $superhero['biography']; ?></h3>
-<?php endif;?>
-        
-
-<?php if($state != "TRUE" && $query != ""):?>
-        <h4><?= "Superhero not found"; ?></h3> 
-<?php endif;?>
+?>

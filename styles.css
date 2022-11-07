@@ -6,6 +6,7 @@ body {
     margin: 0;
     font-size: 18px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    background: #6b7280;
     color: white;
     display: flex;
     flex-direction: column;
@@ -42,9 +43,6 @@ header h1 {
     font-size: 55px;
 }
 
-.search-hero {
-    background: #6b7280;
-}
 .search-hero .container {
     display: flex;
     align-items: center;
@@ -57,11 +55,12 @@ header h1 {
 .search-hero h3 {
     font-size: 23px;
 }
+
 .search-hero .inputfield {
     padding: 20px 190px 20px 20px;
     margin-right: 10px;
     border-radius: 5px;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .search-hero .btn {
@@ -83,13 +82,31 @@ header h1 {
 }
 
 .search-results {
-    background: #6b7280;
+    margin-bottom: 0px;
+    padding-bottom: 10px;
 }
 
 .search-results .container {
     display: flex;
     flex-direction: column;
-    padding-bottom: 50px;
+}
+
+.search-results h1 {
+    font-size: 40px;
+}
+
+.search-results h2 {
+    color: rgb(173, 0, 0);
+}
+
+.search-results h3 {
+    text-transform: uppercase;
+    font-size: 30px;
+}
+
+.search-results h4 {
+    text-transform: uppercase;
+    font-size: 20px;
 }
 
 footer {
